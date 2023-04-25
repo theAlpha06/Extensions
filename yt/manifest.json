@@ -1,0 +1,16 @@
+{
+  "name": "You Tube Enhanced",
+  "manifest_version": 3,
+  "version": "1.0",
+  "description": "This extension gives you features which you tube can't provide",
+  "author":"Shubham Singh",
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
+    },
+    "default_title": "Enhance",
+    "default_popup":"popup.html"
+  }
+}
