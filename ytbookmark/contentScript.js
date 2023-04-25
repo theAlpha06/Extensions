@@ -41,7 +41,7 @@
             bookmarkBtn.className = "ytp-button " + "bookmark-btn";
             bookmarkBtn.title = "Click to bookmark current timestamp";
 
-            youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
+            youtubeLeftControls = document.getElementsByClassName("ytp-right-controls")[0];
             youtubePlayer = document.getElementsByClassName("video-stream")[0];
             
             youtubeLeftControls.append(bookmarkBtn);
