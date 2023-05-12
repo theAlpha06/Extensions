@@ -9,12 +9,3 @@
     font-weight: bold;
     padding: 8px;
   }
-
-  .controls-div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.4em;
-    height: 55rem;
-    z-index: 2147483647;
-  }

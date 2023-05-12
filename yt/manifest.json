@@ -20,7 +20,14 @@
         "assets/delete.png",
         "assets/save.png",
         "assets/loop.jpg",
-        "assets/stop.png"
+        "assets/stop.png",
+        "assets/wishlist.jpg",
+        "assets/card.jpg",
+        "assets/cinema.jpg",
+        "assets/expand.jpg",
+        "assets/popup.jpg",
+        "assets/screenshot.jpg",
+        "assets/speed.jpg"
       ],
       "matches": ["https://*.youtube.com/*"]
     }
