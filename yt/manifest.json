@@ -4,6 +4,25 @@
   "version": "1.0",
   "description": "This extension gives you features which you tube can't provide",
   "author":"Shubham Singh",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": ["https://*.youtube.com/*"]
+    }
+  ],
   "action": {
     "default_icon": {
       "16": "assets/ext-icon.png",
