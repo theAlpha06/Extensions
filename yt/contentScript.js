@@ -70,7 +70,6 @@
           window.matchMedia("(prefers-color-scheme: dark)").matches
         ) {
           toggleBtn.style.filter = "invert(100%)";
-          console.log("aaya");
         }
         controlsDiv.append(toggleBtn);
       });
@@ -87,4 +86,18 @@
   };
   newVideoLoaded();
   
+  setTimeout(() => {
+    const loopBtn = document.getElementById('yt-controls-loop');
+    loopBtn.addEventListener('click', toggleLoop);
+  }, 6000)
+
+  const toggleLoop = () => {
+    const video = document.getElementsByClassName('video-stream html5-main-video')[0];
+    if (video.loop) {
+      video.loop = false;
+    } else {
+      video.loop = true;
+    }
+  }
+
 })();
