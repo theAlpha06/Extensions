@@ -38,7 +38,7 @@
     {
       src: chrome.runtime.getURL("assets/screenshot.jpg"),
       id: "yt-controls-screenshot",
-      title: "Screenshot",
+      title: "Screenshot: Make sure to take screenshot in highest quality",
     },
     {
       src: chrome.runtime.getURL("assets/speed.jpg"),
@@ -125,6 +125,7 @@
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
+    const title = document.getElementsByClassName('style-scope ytd-watch-metadata')[1].innerText;
     const canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -132,7 +133,7 @@
     const dataURI = canvas.toDataURL("image/jpeg");
     const a = document.createElement("a");
     a.href = dataURI;
-    a.download = "";
+    a.download = `Yt-Screenshot-${title}.jpg`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
