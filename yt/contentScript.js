@@ -85,19 +85,36 @@
     }
   };
   newVideoLoaded();
-  
+
   setTimeout(() => {
-    const loopBtn = document.getElementById('yt-controls-loop');
-    loopBtn.addEventListener('click', toggleLoop);
-  }, 6000)
+    const loopBtn = document.getElementById("yt-controls-loop");
+    const stopBtn = document.getElementById("yt-controls-stop");
+    loopBtn.addEventListener("click", toggleLoop);
+    stopBtn.addEventListener("click", toggleStop);
+  }, 6000);
 
   const toggleLoop = () => {
-    const video = document.getElementsByClassName('video-stream html5-main-video')[0];
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    console.log(
+      document.getElementsByClassName("video-stream html5-main-video")
+    );
     if (video.loop) {
       video.loop = false;
     } else {
       video.loop = true;
     }
-  }
+  };
 
+  const toggleStop = () => {
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  };
 })();
