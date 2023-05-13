@@ -45,6 +45,11 @@
       id: "yt-controls-speed",
       title: "Speed",
     },
+    // {
+    //   src: chrome.runtime.getURL("assets/play.jpg"),
+    //   id: "yt-controls-play",
+    //   title: "Play",
+    // },
   ];
   const newVideoLoaded = () => {
     const controlsDivExist = document.getElementsByClassName("controls-div")[0];
@@ -113,10 +118,16 @@
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
+    const stopBtn = document.getElementById("yt-controls-stop");
     if (video.paused) {
       video.play();
+      stopBtn.src = chrome.runtime.getURL("assets/stop.png");
+      stopBtn.title = "Stop video";
     } else {
       video.pause();
+      stopBtn.src = chrome.runtime.getURL("assets/play.jpg");
+      stopBtn.title = "Play video";
+      stopBtn.style.filter = "invert(100%)";
     }
   };
 

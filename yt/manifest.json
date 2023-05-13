@@ -27,7 +27,8 @@
         "assets/expand.jpg",
         "assets/popup.jpg",
         "assets/screenshot.jpg",
-        "assets/speed.jpg"
+        "assets/speed.jpg",
+        "assets/play.jpg"
       ],
       "matches": ["https://*.youtube.com/*"]
     }
