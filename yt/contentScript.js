@@ -89,6 +89,8 @@
   setTimeout(() => {
     const loopBtn = document.getElementById("yt-controls-loop");
     const stopBtn = document.getElementById("yt-controls-stop");
+    const screenshotBtn = document.getElementById("yt-controls-screenshot");
+    screenshotBtn.addEventListener("click", takeScreenshot);
     loopBtn.addEventListener("click", toggleLoop);
     stopBtn.addEventListener("click", toggleStop);
   }, 6000);
@@ -116,5 +118,23 @@
     } else {
       video.pause();
     }
+  };
+
+
+  const takeScreenshot = async () => {
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext("2d").drawImage(video, 0, 0);
+    const dataURI = canvas.toDataURL("image/jpeg");
+    const a = document.createElement("a");
+    a.href = dataURI;
+    a.download = "";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 })();
