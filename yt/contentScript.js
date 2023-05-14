@@ -55,6 +55,11 @@
       id: "yt-controls-speed-plus",
       title: "Increase speed",
     },
+    {
+      src: chrome.runtime.getURL("assets/download.png"),
+      id: "yt-controls-download",
+      title: "Download video",
+    },
     // {
     //   src: chrome.runtime.getURL("assets/play.jpg"),
     //   id: "yt-controls-play",
@@ -109,6 +114,8 @@
     const speedBtn = document.getElementById("yt-controls-speed");
     const speedMinusBtn = document.getElementById("yt-controls-speed-minus");
     const speedPlusBtn = document.getElementById("yt-controls-speed-plus");
+    const downloadBtn = document.getElementById("yt-controls-download");
+    const popupBtn = document.getElementById("yt-controls-popup");
     screenshotBtn.addEventListener("click", takeScreenshot);
     loopBtn.addEventListener("click", toggleLoop);
     stopBtn.addEventListener("click", toggleStop);
@@ -116,6 +123,9 @@
     speedBtn.addEventListener("mouseover", currentSpeed);
     speedMinusBtn.addEventListener("click", decreaseSpeed);
     speedPlusBtn.addEventListener("click", increaseSpeed);
+    downloadBtn.addEventListener("click", downloadVideo);
+    popupBtn.addEventListener("click", popupPlayer);
+
 
   }, 6000);
 
@@ -123,9 +133,6 @@
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
-    console.log(
-      document.getElementsByClassName("video-stream html5-main-video")
-    );
     if (video.loop) {
       video.loop = false;
     } else {
@@ -191,7 +198,6 @@
   }
   
   const decreaseSpeed = () => {
-    const speedMinusBtn = document.getElementById("yt-controls-speed-minus");
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
@@ -199,11 +205,33 @@
   }
   
   const increaseSpeed = () => {
-    const speedPlusBtn = document.getElementById("yt-controls-speed-plus");
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
     video.playbackRate = video.playbackRate + 0.1;
   }
+
+  const downloadVideo = () => {
+    const downloadBtn = document.getElementById("yt-controls-download");
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    const title = document.getElementsByClassName('style-scope ytd-watch-metadata')[1].innerText;
+    const a = document.createElement("a");
+    a.href = video.src;
+    a.download = `Yt-Video-${title}.mp4`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  const popupPlayer = () => {
+    const video = document.getElementsByTagName('video')[0];
+    if(document.pictureInPictureElement !== null){
+      document.exitPictureInPicture();
+    } else {
+      video.requestPictureInPicture();
+    }
+}
 
 })();
