@@ -41,9 +41,19 @@
       title: "Screenshot: Make sure to take screenshot in highest quality",
     },
     {
+      src: chrome.runtime.getURL("assets/minus.png"),
+      id: "yt-controls-speed-minus",
+      title: "Decrease speed",
+    },
+    {
       src: chrome.runtime.getURL("assets/speed.jpg"),
       id: "yt-controls-speed",
       title: "Speed",
+    },
+    {
+      src: chrome.runtime.getURL("assets/plus.png"),
+      id: "yt-controls-speed-plus",
+      title: "Increase speed",
     },
     // {
     //   src: chrome.runtime.getURL("assets/play.jpg"),
@@ -96,10 +106,17 @@
     const stopBtn = document.getElementById("yt-controls-stop");
     const screenshotBtn = document.getElementById("yt-controls-screenshot");
     const fullScreenBtn = document.getElementById("yt-controls-expand");
+    const speedBtn = document.getElementById("yt-controls-speed");
+    const speedMinusBtn = document.getElementById("yt-controls-speed-minus");
+    const speedPlusBtn = document.getElementById("yt-controls-speed-plus");
     screenshotBtn.addEventListener("click", takeScreenshot);
     loopBtn.addEventListener("click", toggleLoop);
     stopBtn.addEventListener("click", toggleStop);
     fullScreenBtn.addEventListener("click", toggleFullScreen);
+    speedBtn.addEventListener("mouseover", currentSpeed);
+    speedMinusBtn.addEventListener("click", decreaseSpeed);
+    speedPlusBtn.addEventListener("click", increaseSpeed);
+
   }, 6000);
 
   const toggleLoop = () => {
@@ -163,6 +180,30 @@
         document.exitFullscreen();
       }
     }
+  }
+
+  const currentSpeed = () => {
+    const speedBtn = document.getElementById("yt-controls-speed");
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    speedBtn.title = `Speed: ${video.playbackRate.toFixed(1)}`;
+  }
+  
+  const decreaseSpeed = () => {
+    const speedMinusBtn = document.getElementById("yt-controls-speed-minus");
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    video.playbackRate = video.playbackRate - 0.1;
+  }
+  
+  const increaseSpeed = () => {
+    const speedPlusBtn = document.getElementById("yt-controls-speed-plus");
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    video.playbackRate = video.playbackRate + 0.1;
   }
 
 })();
