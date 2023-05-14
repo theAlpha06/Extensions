@@ -95,9 +95,11 @@
     const loopBtn = document.getElementById("yt-controls-loop");
     const stopBtn = document.getElementById("yt-controls-stop");
     const screenshotBtn = document.getElementById("yt-controls-screenshot");
+    const fullScreenBtn = document.getElementById("yt-controls-expand");
     screenshotBtn.addEventListener("click", takeScreenshot);
     loopBtn.addEventListener("click", toggleLoop);
     stopBtn.addEventListener("click", toggleStop);
+    fullScreenBtn.addEventListener("click", toggleFullScreen);
   }, 6000);
 
   const toggleLoop = () => {
@@ -149,4 +151,18 @@
     a.click();
     document.body.removeChild(a);
   };
+
+  const toggleFullScreen = () => {
+    const video = document.getElementsByClassName(
+      "video-stream html5-main-video"
+    )[0];
+    if (!document.fullscreenElement) {
+      video.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
+
 })();
