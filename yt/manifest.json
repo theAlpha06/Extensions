@@ -6,7 +6,7 @@
   "author":"Shubham Singh",
   "permissions": ["storage", "tabs","activeTab"],
   "host_permissions": ["https://*.youtube.com/*"],
-  "options_page":"popup.html",
+  "options_page":"options.html",
   "content_scripts": [
     {
       "matches": ["https://*.youtube.com/*"],
