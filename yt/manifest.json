@@ -1,11 +1,12 @@
 {
-  "name": "You Tube Enhanced",
+  "name": "YouTube+™",
   "manifest_version": 3,
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "This extension gives you features which you tube can't provide",
   "author":"Shubham Singh",
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage", "tabs", "alarms"],
   "host_permissions": ["https://*.youtube.com/*"],
+  "options_page":"popup.html",
   "content_scripts": [
     {
       "matches": ["https://*.youtube.com/*"],
@@ -15,34 +16,17 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "assets/bookmark.png",
-        "assets/play.png",
-        "assets/delete.png",
-        "assets/save.png",
-        "assets/loop.jpg",
-        "assets/stop.png",
-        "assets/plus.png",
-        "assets/download.png",
-        "assets/minus.png",
-        "assets/wishlist.jpg",
-        "assets/card.jpg",
-        "assets/cinema.jpg",
-        "assets/expand.jpg",
-        "assets/popup.jpg",
-        "assets/screenshot.jpg",
-        "assets/speed.jpg",
-        "assets/play.jpg"
+        "assets/*"
       ],
       "matches": ["https://*.youtube.com/*"]
     }
   ],
   "action": {
     "default_icon": {
-      "16": "assets/ext-icon.png",
-      "24": "assets/ext-icon.png",
-      "32": "assets/ext-icon.png"
+      "16": "assets/logo-ext.png",
+      "24": "assets/logo-ext.png",
+      "32": "assets/logo-ext.png"
     },
-    "default_title": "Enhance",
-    "default_popup":"popup.html"
+    "default_title": "Enhance your youtube experience!"
   }
 }
