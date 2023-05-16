@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
+
+:root {
+    --black: #000;
+    --white: #fff; 
+}
+
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  margin: 0;
+  font-size: calc(1rem + 0.25vh);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline;
+    padding-left: 1rem;
+    font-family: "Lato", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: var(--white);
+    cursor: pointer;
+}
+
+yt-main {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.yt-main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+}
+
+.yt-main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.yt-main-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
