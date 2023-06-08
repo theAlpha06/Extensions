@@ -60,6 +60,11 @@
       id: "yt-controls-download",
       title: "Download video",
     },
+    {
+      src: chrome.runtime.getURL("assets/setting.jpg"),
+      id: "yt-controls-setting",
+      title: "Open setting page",
+    },
     // {
     //   src: chrome.runtime.getURL("assets/play.jpg"),
     //   id: "yt-controls-play",
@@ -106,7 +111,7 @@
   };
   newVideoLoaded();
 
-  setTimeout(() => {
+  // setTimeout(() => {
     const loopBtn = document.getElementById("yt-controls-loop");
     const stopBtn = document.getElementById("yt-controls-stop");
     const screenshotBtn = document.getElementById("yt-controls-screenshot");
@@ -116,6 +121,7 @@
     const speedPlusBtn = document.getElementById("yt-controls-speed-plus");
     const downloadBtn = document.getElementById("yt-controls-download");
     const popupBtn = document.getElementById("yt-controls-popup");
+    const setting = document.getElementById("yt-controls-setting");
     screenshotBtn.addEventListener("click", takeScreenshot);
     loopBtn.addEventListener("click", toggleLoop);
     stopBtn.addEventListener("click", toggleStop);
@@ -125,9 +131,8 @@
     speedPlusBtn.addEventListener("click", increaseSpeed);
     downloadBtn.addEventListener("click", downloadVideo);
     popupBtn.addEventListener("click", popupPlayer);
-
-
-  }, 6000);
+    setting.addEventListener("click", settingPage);
+  // }, 6000);
 
   const toggleLoop = () => {
     const video = document.getElementsByClassName(
@@ -157,12 +162,13 @@
     }
   };
 
-
   const takeScreenshot = async () => {
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
-    const title = document.getElementsByClassName('style-scope ytd-watch-metadata')[1].innerText;
+    const title = document.getElementsByClassName(
+      "style-scope ytd-watch-metadata"
+    )[1].innerText;
     const canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -187,7 +193,7 @@
         document.exitFullscreen();
       }
     }
-  }
+  };
 
   const currentSpeed = () => {
     const speedBtn = document.getElementById("yt-controls-speed");
@@ -195,43 +201,47 @@
       "video-stream html5-main-video"
     )[0];
     speedBtn.title = `Speed: ${video.playbackRate.toFixed(1)}`;
-  }
-  
+  };
+
   const decreaseSpeed = () => {
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
     video.playbackRate = video.playbackRate - 0.1;
-  }
-  
+  };
+
   const increaseSpeed = () => {
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
     video.playbackRate = video.playbackRate + 0.1;
-  }
+  };
 
   const downloadVideo = () => {
     const downloadBtn = document.getElementById("yt-controls-download");
     const video = document.getElementsByClassName(
       "video-stream html5-main-video"
     )[0];
-    const title = document.getElementsByClassName('style-scope ytd-watch-metadata')[1].innerText;
+    const title = document.getElementsByClassName(
+      "style-scope ytd-watch-metadata"
+    )[1].innerText;
     const a = document.createElement("a");
     a.href = video.src;
     a.download = `Yt-Video-${title}.mp4`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  }
+  };
 
   const popupPlayer = () => {
-    const video = document.getElementsByTagName('video')[0];
-    if(document.pictureInPictureElement !== null){
+    const video = document.getElementsByTagName("video")[0];
+    if (document.pictureInPictureElement !== null) {
       document.exitPictureInPicture();
     } else {
       video.requestPictureInPicture();
     }
-}
+  };
 
+  const settingPage = () => {
+  };
 })();
