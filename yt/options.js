@@ -1,10 +1,14 @@
-const togglePlayPause = document.getElementById("toggle");
+const togglePlayPause = document.getElementById("toggle_play_pause");
 
 const toggle = () => {
   if (togglePlayPause.checked) {
-    console.log("on");
+    chrome.storage.sync.set({ togglePlayPause: true }).then(() => {
+      console.log("Value is set");
+    });
   } else {
-    console.log("off");
+    chrome.storage.sync.get(["togglePlayPause"]).then((result) => {
+      console.log("Value currently is " + result.togglePlayPause);
+    });
   }
 };
 togglePlayPause.addEventListener("click", toggle);

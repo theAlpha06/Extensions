@@ -9,9 +9,9 @@
   "options_page":"options.html",
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/*"],
       "js": ["contentScript.js"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "matches": ["https://*.youtube.com/*"]
     }
   ],
   "web_accessible_resources": [

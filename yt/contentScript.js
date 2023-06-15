@@ -65,12 +65,8 @@
       id: "yt-controls-setting",
       title: "Open setting page",
     },
-    // {
-    //   src: chrome.runtime.getURL("assets/play.jpg"),
-    //   id: "yt-controls-play",
-    //   title: "Play",
-    // },
   ];
+
   const newVideoLoaded = () => {
     const controlsDivExist = document.getElementsByClassName("controls-div")[0];
 
@@ -102,8 +98,8 @@
       setTimeout(() => {
         const youtubeChrome =
           document.getElementsByClassName("ytd-watch-metadata")[0];
-        if (!youtubeChrome) alert("Network slow, please refresh the page!");
-        else {
+        // if (!youtubeChrome) alert("Network slow, please refresh the page!");
+        if (youtubeChrome) {
           youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
         }
       }, 5000);
@@ -111,7 +107,7 @@
   };
   newVideoLoaded();
 
-  // setTimeout(() => {
+  setTimeout(() => {
     const loopBtn = document.getElementById("yt-controls-loop");
     const stopBtn = document.getElementById("yt-controls-stop");
     const screenshotBtn = document.getElementById("yt-controls-screenshot");
@@ -131,8 +127,8 @@
     speedPlusBtn.addEventListener("click", increaseSpeed);
     downloadBtn.addEventListener("click", downloadVideo);
     popupBtn.addEventListener("click", popupPlayer);
-    setting.addEventListener("click", settingPage);
-  // }, 6000);
+    setting.addEventListener("click", openOptionsPage);
+  }, 6000);
 
   const toggleLoop = () => {
     const video = document.getElementsByClassName(
@@ -241,7 +237,5 @@
       video.requestPictureInPicture();
     }
   };
-
-  const settingPage = () => {
-  };
+  
 })();

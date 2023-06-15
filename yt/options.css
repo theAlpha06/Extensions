@@ -3,20 +3,20 @@
 :root {
     --black: #000;
     --white: #fff; 
+    --green: orange;
 }
-
 
 body {
   font-family: "Lato", sans-serif;
   background-color: var(--black);
   color: var(--white);
   margin: 0;
+  padding: 0;
   font-size: calc(1rem + 0.25vh);
 }
-
-/* .yt-main-header {
-    background-color: red;
-} */
+p {
+    margin: 0;
+}
 
 ul {
     list-style: none;
@@ -26,7 +26,7 @@ ul {
 
 li {
     display: inline;
-    padding-left: 1rem;
+    padding: 0.6rem;
     font-family: "Lato", sans-serif;
 }
 
@@ -36,9 +36,16 @@ a{
     cursor: pointer;
 }
 
-yt-main {
-    background-color: var(--white);
-    color: var(--black);
+span {
+    font-size: 3rem;
+    font-family: "Sansita One", sans-serif;
+    color: var(--green);
+    padding: 0.3rem;
+}
+
+.yt-main {
+    width: 70%;
+    margin: 0 auto;
 }
 
 .yt-main-header {
@@ -48,11 +55,50 @@ yt-main {
     padding: 0.6rem 1rem;
 }
 
+fieldset {
+    border: 3px solid var(--green);
+    width: 35%;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--green);
+    padding: 0 0.5rem;
+}
+
 .yt-main-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* border: 3px solid var(--green);
+    border-radius: 1rem;
+    padding-top: 0.3rem; */
+}
+
+.yt-main-section_border_text {
+    position: absolute;
+    background-color: black;
+}
+
+.yt-main-section_heading {
+    writing-mode: vertical-lr;
+    text-orientation:sideways-right;
+    letter-spacing: 0.3rem;
+}
+
+.invert_img {
+    filter: invert(100%);
+}
+
+.list_item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
 }
 
 .yt-main-footer {
@@ -60,4 +106,10 @@ yt-main {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+}
+
+.footer_text {
+    width: 90%;
+    margin: 1rem auto 0;
+    text-align: center;
 }
