@@ -67,6 +67,25 @@
     },
   ];
 
+//   chrome.runtime.onMessage.addListener((obj, sender, response) => {
+//     console.log(obj)
+//     const { type, value, videoId } = obj;
+//     console.log(type);
+
+//     if (type === "REMOVE PLAY") {
+//       const video = document.getElementById('yt-controls-stop');
+//       video.remove();
+//     }
+//     return true;
+// });
+
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
+    if (request.greeting === "hello") {
+      sendResponse({ farewell: "goodbye" });
+    }
+  });
+
   const newVideoLoaded = () => {
     const controlsDivExist = document.getElementsByClassName("controls-div")[0];
 
