@@ -1,0 +1,28 @@
+{
+  "name": "Debugger(1)™",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "description": "This extension allows you to view various elements of a web page.",
+  "author":"Shubham Singh",
+  "permissions": ["storage", "tabs","activeTab", "scripting"],
+  "host_permissions": ["*://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/debugger.png",
+      "24": "assets/debugger.png",
+      "32": "assets/debugger.png"
+    },
+    "default_title": "Enhance your debugging experience!"
+  }
+}
