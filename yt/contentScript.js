@@ -79,13 +79,6 @@
 //     return true;
 // });
 
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
-    if (request.greeting === "hello") {
-      sendResponse({ farewell: "goodbye" });
-    }
-  });
-
   const newVideoLoaded = () => {
     const controlsDivExist = document.getElementsByClassName("controls-div")[0];
 
@@ -257,4 +250,8 @@
     }
   };
   
+  const openOptionsPage = async() => {
+      chrome.runtime.sendMessage({message: "openOptionsPage"});
+  }
+
 })();
