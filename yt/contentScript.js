@@ -106,16 +106,34 @@
         }
         controlsDiv.append(toggleBtn);
       });
+      const container = document.createElement("div");
+      container.className = "yt_plus_container";
+      container.style.position = "fixed";
+      container.style.bottom = "0px";
+      container.style.left = "50%";
+      container.style.zIndex = "2147483647";
+      container.style.transform = "translateX(-50%)";
+      container.appendChild(controlsDiv);
 
+      // add controls just below the video player
+      // setTimeout(() => {
+      //   const youtubeChrome =
+      //     document.getElementsByClassName("ytd-watch-metadata")[0];
+      //   // if (!youtubeChrome) alert("Network slow, please refresh the page!");
+      //   if (youtubeChrome) {
+      //     youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
+      //   }
+      // }, 5000);
+
+      // add controls to bottom of the view port
       setTimeout(() => {
-        const youtubeChrome =
-          document.getElementsByClassName("ytd-watch-metadata")[0];
-        // if (!youtubeChrome) alert("Network slow, please refresh the page!");
-        if (youtubeChrome) {
-          youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
+        const yt_container = document.getElementById("columns");
+        if (yt_container) {
+          yt_container.appendChild(container);
         }
-      }, 5000);
+      }, 5000)
     }
+
   };
   newVideoLoaded();
 
