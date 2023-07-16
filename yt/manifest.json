@@ -11,6 +11,7 @@
     {
       "run_at": "document_end",
       "js": ["contentScript.js"],
+      "css": ["contentScript.css"],
       "matches": ["https://*.youtube.com/*"]
     }
   ],

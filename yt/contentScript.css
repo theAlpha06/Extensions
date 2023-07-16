@@ -1,0 +1,21 @@
+.controls-div {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.yt_plus_container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+  padding: 1rem;
+  bottom: 10px;
+  border-radius: 10px;
+  z-index: 9999999;
+  left: 50%;
+  transform: translateX(-50%);
+}

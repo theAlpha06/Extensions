@@ -67,18 +67,6 @@
     },
   ];
 
-//   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-//     console.log(obj)
-//     const { type, value, videoId } = obj;
-//     console.log(type);
-
-//     if (type === "REMOVE PLAY") {
-//       const video = document.getElementById('yt-controls-stop');
-//       video.remove();
-//     }
-//     return true;
-// });
-
   const newVideoLoaded = () => {
     const controlsDivExist = document.getElementsByClassName("controls-div")[0];
 
@@ -108,30 +96,59 @@
       });
       const container = document.createElement("div");
       container.className = "yt_plus_container";
-      container.style.position = "fixed";
-      container.style.bottom = "0px";
-      container.style.left = "50%";
-      container.style.zIndex = "2147483647";
-      container.style.transform = "translateX(-50%)";
       container.appendChild(controlsDiv);
 
-      // add controls just below the video player
-      // setTimeout(() => {
-      //   const youtubeChrome =
-      //     document.getElementsByClassName("ytd-watch-metadata")[0];
-      //   // if (!youtubeChrome) alert("Network slow, please refresh the page!");
-      //   if (youtubeChrome) {
-      //     youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
-      //   }
-      // }, 5000);
-
-      // add controls to bottom of the view port
-      setTimeout(() => {
-        const yt_container = document.getElementById("columns");
-        if (yt_container) {
-          yt_container.appendChild(container);
+      chrome.storage.sync.get(["controlsPosition"]).then((result) => {
+        if (result.controlsPosition === "1") {
+          setTimeout(() => {
+            const yt_container = document.getElementById("columns");
+            if (yt_container) {
+              controlsDiv.style.marginBottom = "0px";
+              yt_container.appendChild(container);
+            }
+          }, 5000)
         }
-      }, 5000)
+        else if (result.controlsPosition === "2") {
+          setTimeout(() => {
+            const yt_container = document.getElementById("columns");
+            if (yt_container) {
+              controlsDiv.style.marginBottom = "0px";
+              container.style.left = "1rem";
+              container.style.transform = "translateX(0px)";
+              yt_container.appendChild(container);
+            }
+          }, 5000)
+        }
+        else if (result.controlsPosition === "3") {
+          setTimeout(() => {
+            const yt_container = document.getElementById("columns");
+            if (yt_container) {
+              controlsDiv.style.marginBottom = "0px";
+              container.style.right = "1rem";
+              container.style.left = "unset";
+              container.style.transform = "translateX(0px)";
+              yt_container.appendChild(container);
+            }
+          }, 5000)
+        }
+        else if (result.controlsPosition === "4") {
+          setTimeout(() => {
+            const youtubeChrome =
+              document.getElementsByClassName("ytd-watch-metadata")[0];
+            if (youtubeChrome) {
+              youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
+            }
+          }, 5000);
+        } else {
+          setTimeout(() => {
+            const yt_container = document.getElementById("columns");
+            if (yt_container) {
+              controlsDiv.style.marginBottom = "0px";
+              yt_container.appendChild(container);
+            }
+          }, 5000)
+        }
+      });
     }
 
   };
@@ -243,20 +260,32 @@
     video.playbackRate = video.playbackRate + 0.1;
   };
 
-  const downloadVideo = () => {
-    const downloadBtn = document.getElementById("yt-controls-download");
-    const video = document.getElementsByClassName(
-      "video-stream html5-main-video"
-    )[0];
-    const title = document.getElementsByClassName(
-      "style-scope ytd-watch-metadata"
-    )[1].innerText;
-    const a = document.createElement("a");
-    a.href = video.src;
-    a.download = `Yt-Video-${title}.mp4`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+  const downloadVideo = async() => {
+    // const downloadBtn = document.getElementById("yt-controls-download");
+    // const video = document.getElementsByClassName(
+    //   "video-stream html5-main-video"
+    // )[0];
+    // const title = document.getElementsByClassName(
+    //   "style-scope ytd-watch-metadata"
+    // )[1].innerText;
+    // const a = document.createElement("a");
+    // a.href = video.src;
+    // a.download = `Yt-Video-${title}.mp4`;
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
+    console.log('first')
+    const url = window.location.href;
+    const videoId = url.split("v=")[1];
+    console.log(videoId)
+    chrome.runtime.sendMessage({message: "downloadVideo", videoId: videoId});
+
+    // res.header('Content-Disposition', 'attachment; filename="video.mp4"');
+    // ytdl(URL, {
+    //     format: 'mp4'
+    // }).pipe(res);
+
+
   };
 
   const popupPlayer = () => {
@@ -272,4 +301,4 @@
       chrome.runtime.sendMessage({message: "openOptionsPage"});
   }
 
-})();
+})(window, document);
