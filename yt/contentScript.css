@@ -19,3 +19,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.ytp-ad-overlay-container, #player-ads {
+  display: none !important;
+}

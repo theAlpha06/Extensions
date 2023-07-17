@@ -338,3 +338,10 @@ const openOptionsPage = async () => {
 //     player.style.position = "relative";
 //   }
 // })
+
+
+setInterval(() => {
+  for (const button of document.getElementsByClassName("ytp-ad-skip-button")) {
+    button.click();
+  }
+}, 300);

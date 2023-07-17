@@ -1,8 +1,8 @@
 {
-  "name": "YouTube+™",
+  "name": "YTControl+™",
   "manifest_version": 3,
   "version": "1.0.0",
-  "description": "This extension gives you features which you tube can't provide",
+  "description": "This extension provide ad-ons feature to youtube.",
   "author":"Shubham Singh",
   "permissions": ["storage", "tabs","activeTab"],
   "host_permissions": ["https://*.youtube.com/*"],

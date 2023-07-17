@@ -16,6 +16,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set({ togglePlus: true });
     chrome.storage.sync.set({ toggleDownload: true });
     chrome.storage.sync.set({ toggleSetting: true });
+    // chrome.runtime.openOptionsPage();
   });
 
 chrome.runtime.onMessage.addListener(
