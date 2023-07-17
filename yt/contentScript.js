@@ -4,66 +4,79 @@ const controlsImg = [
     src: chrome.runtime.getURL("assets/loop.jpg"),
     id: "yt-controls-loop",
     title: "Loop video",
+    key: "toggleLoop"
   },
   {
     src: chrome.runtime.getURL("assets/stop.png"),
     id: "yt-controls-stop",
     title: "Stop video",
+    key: "togglePlayPause"
   },
   {
     src: chrome.runtime.getURL("assets/wishlist.jpg"),
     id: "yt-controls-wishlist",
     title: "Add to wishlist",
+    key: "addWishlist"
   },
   {
     src: chrome.runtime.getURL("assets/card.jpg"),
     id: "yt-controls-visibility",
     title: "Toogle info cards/end screen visibility",
+    key: "toggleCards"
   },
   {
     src: chrome.runtime.getURL("assets/cinema.jpg"),
     id: "yt-controls-cinema",
     title: "Cinema mode",
+    key: "toggleCinema"
   },
   {
     src: chrome.runtime.getURL("assets/expand.jpg"),
     id: "yt-controls-expand",
     title: "Expand video",
+    key: "toggleExpand"
   },
   {
     src: chrome.runtime.getURL("assets/popup.jpg"),
     id: "yt-controls-popup",
     title: "Popup Player",
+    key: "togglePopup"
   },
   {
     src: chrome.runtime.getURL("assets/screenshot.jpg"),
     id: "yt-controls-screenshot",
     title: "Screenshot: Make sure to take screenshot in highest quality",
+    key: "toggleScreenshot"
   },
   {
     src: chrome.runtime.getURL("assets/minus.png"),
     id: "yt-controls-speed-minus",
     title: "Decrease speed",
+    key: "toggleMinus"
   },
   {
     src: chrome.runtime.getURL("assets/speed.jpg"),
     id: "yt-controls-speed",
     title: "Speed",
+    key: "toggleSpeed"
   },
   {
     src: chrome.runtime.getURL("assets/plus.png"),
     id: "yt-controls-speed-plus",
     title: "Increase speed",
+    key: "togglePlus"
   },
   {
     src: chrome.runtime.getURL("assets/download.png"),
     id: "yt-controls-download",
     title: "Download video",
+    key: "toggleDownload"
   },
   {
     src: chrome.runtime.getURL("assets/setting.jpg"),
     id: "yt-controls-setting",
     title: "Open setting page",
+    key: "toggleSetting"
   },
 ];
 
@@ -80,19 +93,26 @@ const newVideoLoaded = () => {
     controlsDiv.style.marginBottom = "10px";
 
     controlsImg.map((img) => {
-      const toggleBtn = document.createElement("img");
-      toggleBtn.title = img.title;
-      toggleBtn.id = img.id;
-      toggleBtn.width = 20;
-      toggleBtn.style.cursor = "pointer";
-      toggleBtn.src = img.src;
-      if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        toggleBtn.style.filter = "invert(100%)";
+      let key = img?.key;
+      if (key) {
+        chrome.storage.sync.get(key).then((result) => {
+          if (Object.values(result)[0]) {
+            const toggleBtn = document.createElement("img");
+            toggleBtn.title = img.title;
+            toggleBtn.id = img.id;
+            toggleBtn.width = 20;
+            toggleBtn.style.cursor = "pointer";
+            toggleBtn.src = img.src;
+            if (
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches
+            )  {
+              toggleBtn.style.filter = "invert(100%)";
+            }
+            controlsDiv.append(toggleBtn);
+          }
+        })
       }
-      controlsDiv.append(toggleBtn);
     });
     const container = document.createElement("div");
     container.className = "yt_plus_container";
@@ -165,16 +185,16 @@ setTimeout(() => {
   const downloadBtn = document.getElementById("yt-controls-download");
   const popupBtn = document.getElementById("yt-controls-popup");
   const setting = document.getElementById("yt-controls-setting");
-  screenshotBtn.addEventListener("click", takeScreenshot);
-  loopBtn.addEventListener("click", toggleLoop);
-  stopBtn.addEventListener("click", toggleStop);
-  fullScreenBtn.addEventListener("click", toggleFullScreen);
-  speedBtn.addEventListener("mouseover", currentSpeed);
-  speedMinusBtn.addEventListener("click", decreaseSpeed);
-  speedPlusBtn.addEventListener("click", increaseSpeed);
-  downloadBtn.addEventListener("click", downloadVideo);
-  popupBtn.addEventListener("click", popupPlayer);
-  setting.addEventListener("click", openOptionsPage);
+  screenshotBtn?.addEventListener("click", takeScreenshot);
+  loopBtn?.addEventListener("click", toggleLoop);
+  stopBtn?.addEventListener("click", toggleStop);
+  fullScreenBtn?.addEventListener("click", toggleFullScreen);
+  speedBtn?.addEventListener("mouseover", currentSpeed);
+  speedMinusBtn?.addEventListener("click", decreaseSpeed);
+  speedPlusBtn?.addEventListener("click", increaseSpeed);
+  downloadBtn?.addEventListener("click", downloadVideo);
+  popupBtn?.addEventListener("click", popupPlayer);
+  setting?.addEventListener("click", openOptionsPage);
 }, 6000);
 
 const toggleLoop = () => {
@@ -301,20 +321,20 @@ const openOptionsPage = async () => {
   chrome.runtime.sendMessage({ message: "openOptionsPage" });
 }
 
-window.addEventListener("scroll", () => {
+// window.addEventListener("scroll", () => {
 
-  // TODO: Make the container cover the whole video (fix: video crop issue)
+//   // TODO: Make the container cover the whole video (fix: video crop issue)
 
-  const player = document.getElementById('player');
-  const metaData = document.getElementById('above-the-fold');
-  const videoContainer = document.getElementsByClassName("video-stream html5-main-video")[0];
-  const bottom = videoContainer.getBoundingClientRect().bottom;
-  const { top } = metaData.getBoundingClientRect();
-  if (bottom < 0 ) {
-    player.style.position = "fixed";
-    player.style.zIndex = "999999";
-  }
-  if (top > 0) {
-    player.style.position = "relative";
-  }
-})
+//   const player = document.getElementById('player');
+//   const metaData = document.getElementById('above-the-fold');
+//   const videoContainer = document.getElementsByClassName("video-stream html5-main-video")[0];
+//   const bottom = videoContainer.getBoundingClientRect().bottom;
+//   const { top } = metaData.getBoundingClientRect();
+//   if (bottom < 0 ) {
+//     player.style.position = "fixed";
+//     player.style.zIndex = "999999";
+//   }
+//   if (top > 0) {
+//     player.style.position = "relative";
+//   }
+// })

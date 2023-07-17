@@ -2,6 +2,8 @@ chrome.action.onClicked.addListener(() => {
     chrome.runtime.openOptionsPage();
 })
 
+
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         console.log(sender.tab ?

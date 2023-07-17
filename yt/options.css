@@ -114,6 +114,7 @@ footer {
 
 .list_item {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: start;
   gap: 1rem;
