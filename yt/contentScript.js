@@ -106,7 +106,7 @@ const newVideoLoaded = () => {
             if (
               window.matchMedia &&
               window.matchMedia("(prefers-color-scheme: dark)").matches
-            )  {
+            ) {
               toggleBtn.style.filter = "invert(100%)";
             }
             controlsDiv.append(toggleBtn);
@@ -260,26 +260,59 @@ const toggleFullScreen = () => {
   }
 };
 
+const isSpeedContainerExist = () => {
+  const speedDiv = document.getElementsByClassName("speed_indicator")[0];
+  if (speedDiv) {
+    speedDiv.remove();
+  }
+  return;
+}
+
+const speedContainer = () => {
+  const videoContainer = document.getElementsByClassName("html5-video-player ytp-transparent ytp-exp-bottom-control-flexbox ytp-exp-ppp-update ytp-hide-info-bar ytp-fine-scrubbing-exp ytp-autonav-endscreen-cancelled-state ytp-fit-cover-video ytp-branding-shown paused-mode")[0];
+  const speedDiv = document.createElement("div");
+  speedDiv.className = "speed_indicator";
+  videoContainer.appendChild(speedDiv);
+  return speedDiv;
+}
+
+
 const currentSpeed = () => {
-  const speedBtn = document.getElementById("yt-controls-speed");
+  isSpeedContainerExist()
+  const speedDiv = speedContainer();
   const video = document.getElementsByClassName(
     "video-stream html5-main-video"
   )[0];
-  speedBtn.title = `Speed: ${video.playbackRate.toFixed(1)}`;
+  speedDiv.innerText = `Speed: ${video.playbackRate.toFixed(1)}`;
+  setTimeout(() => {
+    speedDiv.remove();
+  }, 2000)
 };
 
 const decreaseSpeed = () => {
+  if (isSpeedContainerExist()) {}
+  const speedDiv = speedContainer();
   const video = document.getElementsByClassName(
     "video-stream html5-main-video"
   )[0];
   video.playbackRate = video.playbackRate - 0.1;
+  speedDiv.innerText = `Speed: ${video.playbackRate.toFixed(1)}`;
+  setTimeout(() => {
+    speedDiv.remove();
+  }, 2000);
 };
 
 const increaseSpeed = () => {
+  isSpeedContainerExist()
+  const speedDiv = speedContainer();
   const video = document.getElementsByClassName(
     "video-stream html5-main-video"
   )[0];
   video.playbackRate = video.playbackRate + 0.1;
+  speedDiv.innerText = `Speed: ${video.playbackRate.toFixed(1)}`;
+  setTimeout(() => {
+    speedDiv.remove();
+  }, 2000);
 };
 
 const downloadVideo = async () => {

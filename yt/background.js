@@ -17,17 +17,17 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set({ toggleDownload: true });
     chrome.storage.sync.set({ toggleSetting: true });
     // chrome.runtime.openOptionsPage();
-  });
+});
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         console.log(sender.tab ?
             "from a content script:" + sender.tab.url :
             "from the extension");
-        if (request.message === "openOptionsPage"){
+        if (request.message === "openOptionsPage") {
             chrome.runtime.openOptionsPage();
             return;
-        } else if (request.message === "downloadVideo"){
+        } else if (request.message === "downloadVideo") {
             console.log('f');
         }
     }

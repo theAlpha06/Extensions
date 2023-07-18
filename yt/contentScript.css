@@ -6,9 +6,22 @@
   margin-bottom: 10px;
 }
 
+.speed_indicator {
+  position: absolute;
+  top: 0;
+  z-index: 9999999;
+  width: 100%;
+  font-size: 2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .yt_plus_container {
   position: fixed;
   display: flex;
+  font-size: larger;
   align-items: center;
   justify-content: center;
   background-color: #222;
