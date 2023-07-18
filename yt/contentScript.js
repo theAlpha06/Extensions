@@ -21,7 +21,7 @@ const controlsImg = [
   {
     src: chrome.runtime.getURL("assets/card.jpg"),
     id: "yt-controls-visibility",
-    title: "Toogle info cards/end screen visibility",
+    title: "Remove info cards/end screen visibility",
     key: "toggleCards"
   },
   {
@@ -177,6 +177,7 @@ newVideoLoaded();
 setTimeout(() => {
   const loopBtn = document.getElementById("yt-controls-loop");
   const stopBtn = document.getElementById("yt-controls-stop");
+  const toggleCards = document.getElementById("yt-controls-visibility");
   const screenshotBtn = document.getElementById("yt-controls-screenshot");
   const fullScreenBtn = document.getElementById("yt-controls-expand");
   const speedBtn = document.getElementById("yt-controls-speed");
@@ -188,6 +189,7 @@ setTimeout(() => {
   screenshotBtn?.addEventListener("click", takeScreenshot);
   loopBtn?.addEventListener("click", toggleLoop);
   stopBtn?.addEventListener("click", toggleStop);
+  toggleCards?.addEventListener("click", toggleCardsVisibility);
   fullScreenBtn?.addEventListener("click", toggleFullScreen);
   speedBtn?.addEventListener("mouseover", currentSpeed);
   speedMinusBtn?.addEventListener("click", decreaseSpeed);
@@ -319,6 +321,10 @@ const popupPlayer = () => {
 
 const openOptionsPage = async () => {
   chrome.runtime.sendMessage({ message: "openOptionsPage" });
+}
+
+const toggleCardsVisibility = () => {
+  document.querySelectorAll(".ytp-ce-element").forEach((el) => el.remove());
 }
 
 // window.addEventListener("scroll", () => {
