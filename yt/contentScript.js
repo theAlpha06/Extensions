@@ -192,6 +192,7 @@ setTimeout(() => {
   toggleCards?.addEventListener("click", toggleCardsVisibility);
   fullScreenBtn?.addEventListener("click", toggleFullScreen);
   speedBtn?.addEventListener("mouseover", currentSpeed);
+  speedBtn?.addEventListener("scroll", (e) => incDecSpeed(e));
   speedMinusBtn?.addEventListener("click", decreaseSpeed);
   speedPlusBtn?.addEventListener("click", increaseSpeed);
   downloadBtn?.addEventListener("click", downloadVideo);
@@ -275,6 +276,28 @@ const speedContainer = () => {
   videoContainer.appendChild(speedDiv);
   return speedDiv;
 }
+
+const incDecSpeed = (e) => {
+  console.log(e)
+  const speedDiv = speedContainer();
+  const video = document.getElementsByClassName(
+    "video-stream html5-main-video"
+  )[0];
+  if (e.deltaY > 0) {
+    video.playbackRate = video.playbackRate - 0.1;
+    speedDiv.innerText = `Speed: ${video.playbackRate.toFixed(1)}`;
+    setTimeout(() => {
+      speedDiv.remove();
+    }, 2000);
+  } else {
+    video.playbackRate = video.playbackRate + 0.1;
+    speedDiv.innerText = `Speed: ${video.playbackRate.toFixed(1)}`;
+    setTimeout(() => {
+      speedDiv.remove();
+    }, 2000);
+  }
+}
+
 
 
 const currentSpeed = () => {

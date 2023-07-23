@@ -27,8 +27,6 @@ chrome.runtime.onMessage.addListener(
         if (request.message === "openOptionsPage") {
             chrome.runtime.openOptionsPage();
             return;
-        } else if (request.message === "downloadVideo") {
-            console.log('f');
-        }
+        } 
     }
 );
