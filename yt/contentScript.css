@@ -8,6 +8,8 @@
 
 .speed_indicator {
   position: absolute;
+  background-color: black;
+  color: white;
   top: 0;
   z-index: 9999999;
   width: 100%;

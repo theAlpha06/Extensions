@@ -270,15 +270,14 @@ const isSpeedContainerExist = () => {
 }
 
 const speedContainer = () => {
-  const videoContainer = document.getElementsByClassName("html5-video-player ytp-transparent ytp-exp-bottom-control-flexbox ytp-exp-ppp-update ytp-hide-info-bar ytp-fine-scrubbing-exp ytp-autonav-endscreen-cancelled-state ytp-fit-cover-video ytp-branding-shown paused-mode")[0];
+  const videoContainer = document.getElementsByClassName("style-scope ytd-player")[0];
   const speedDiv = document.createElement("div");
   speedDiv.className = "speed_indicator";
-  videoContainer.appendChild(speedDiv);
+  videoContainer?.appendChild(speedDiv);
   return speedDiv;
 }
 
 const incDecSpeed = (e) => {
-  console.log(e)
   const speedDiv = speedContainer();
   const video = document.getElementsByClassName(
     "video-stream html5-main-video"
