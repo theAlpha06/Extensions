@@ -103,12 +103,12 @@ const newVideoLoaded = () => {
             toggleBtn.width = 20;
             toggleBtn.style.cursor = "pointer";
             toggleBtn.src = img.src;
-            if (
-              window.matchMedia &&
-              window.matchMedia("(prefers-color-scheme: dark)").matches
-            ) {
-              toggleBtn.style.filter = "invert(100%)";
-            }
+            // if (
+            //   window.matchMedia &&
+            //   window.matchMedia("(prefers-color-scheme: dark)").matches
+            // ) {
+            toggleBtn.style.filter = "invert(100%)";
+            // }
             controlsDiv.append(toggleBtn);
           }
         })
@@ -312,7 +312,7 @@ const currentSpeed = () => {
 };
 
 const decreaseSpeed = () => {
-  if (isSpeedContainerExist()) {}
+  if (isSpeedContainerExist()) { }
   const speedDiv = speedContainer();
   const video = document.getElementsByClassName(
     "video-stream html5-main-video"
@@ -338,31 +338,7 @@ const increaseSpeed = () => {
 };
 
 const downloadVideo = async () => {
-  // const downloadBtn = document.getElementById("yt-controls-download");
-  // const video = document.getElementsByClassName(
-  //   "video-stream html5-main-video"
-  // )[0];
-  // const title = document.getElementsByClassName(
-  //   "style-scope ytd-watch-metadata"
-  // )[1].innerText;
-  // const a = document.createElement("a");
-  // a.href = video.src;
-  // a.download = `Yt-Video-${title}.mp4`;
-  // document.body.appendChild(a);
-  // a.click();
-  // document.body.removeChild(a);
-  console.log('first')
-  const url = window.location.href;
-  const videoId = url.split("v=")[1];
-  console.log(videoId)
-  chrome.runtime.sendMessage({ message: "downloadVideo", videoId: videoId });
-
-  // res.header('Content-Disposition', 'attachment; filename="video.mp4"');
-  // ytdl(URL, {
-  //     format: 'mp4'
-  // }).pipe(res);
-
-
+  alert('Coming Soon!')
 };
 
 const popupPlayer = () => {
