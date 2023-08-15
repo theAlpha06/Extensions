@@ -6,30 +6,30 @@ const controlsImg = [
     title: "Loop video",
     key: "toggleLoop"
   },
-  {
-    src: chrome.runtime.getURL("assets/stop.png"),
-    id: "yt-controls-stop",
-    title: "Stop video",
-    key: "togglePlayPause"
-  },
-  {
-    src: chrome.runtime.getURL("assets/wishlist.jpg"),
-    id: "yt-controls-wishlist",
-    title: "Add to wishlist",
-    key: "addWishlist"
-  },
+  // {
+  //   src: chrome.runtime.getURL("assets/stop.png"),
+  //   id: "yt-controls-stop",
+  //   title: "Stop video",
+  //   key: "togglePlayPause"
+  // },
+  // {
+  //   src: chrome.runtime.getURL("assets/wishlist.jpg"),
+  //   id: "yt-controls-wishlist",
+  //   title: "Add to wishlist",
+  //   key: "addWishlist"
+  // },
   {
     src: chrome.runtime.getURL("assets/card.jpg"),
     id: "yt-controls-visibility",
     title: "Remove info cards/end screen visibility",
     key: "toggleCards"
   },
-  {
-    src: chrome.runtime.getURL("assets/cinema.jpg"),
-    id: "yt-controls-cinema",
-    title: "Cinema mode",
-    key: "toggleCinema"
-  },
+  // {
+  //   src: chrome.runtime.getURL("assets/cinema.jpg"),
+  //   id: "yt-controls-cinema",
+  //   title: "Cinema mode",
+  //   key: "toggleCinema"
+  // },
   {
     src: chrome.runtime.getURL("assets/expand.jpg"),
     id: "yt-controls-expand",
@@ -66,12 +66,12 @@ const controlsImg = [
     title: "Increase speed",
     key: "togglePlus"
   },
-  {
-    src: chrome.runtime.getURL("assets/download.png"),
-    id: "yt-controls-download",
-    title: "Download video",
-    key: "toggleDownload"
-  },
+  // {
+  //   src: chrome.runtime.getURL("assets/download.png"),
+  //   id: "yt-controls-download",
+  //   title: "Download video",
+  //   key: "toggleDownload"
+  // },
   {
     src: chrome.runtime.getURL("assets/setting.jpg"),
     id: "yt-controls-setting",
@@ -176,7 +176,7 @@ newVideoLoaded();
 
 setTimeout(() => {
   const loopBtn = document.getElementById("yt-controls-loop");
-  const stopBtn = document.getElementById("yt-controls-stop");
+  // const stopBtn = document.getElementById("yt-controls-stop");
   const toggleCards = document.getElementById("yt-controls-visibility");
   const screenshotBtn = document.getElementById("yt-controls-screenshot");
   const fullScreenBtn = document.getElementById("yt-controls-expand");
@@ -188,14 +188,14 @@ setTimeout(() => {
   const setting = document.getElementById("yt-controls-setting");
   screenshotBtn?.addEventListener("click", takeScreenshot);
   loopBtn?.addEventListener("click", toggleLoop);
-  stopBtn?.addEventListener("click", toggleStop);
+  // stopBtn?.addEventListener("click", toggleStop);
   toggleCards?.addEventListener("click", toggleCardsVisibility);
   fullScreenBtn?.addEventListener("click", toggleFullScreen);
   speedBtn?.addEventListener("mouseover", currentSpeed);
   speedBtn?.addEventListener("scroll", (e) => incDecSpeed(e));
   speedMinusBtn?.addEventListener("click", decreaseSpeed);
   speedPlusBtn?.addEventListener("click", increaseSpeed);
-  downloadBtn?.addEventListener("click", downloadVideo);
+  // downloadBtn?.addEventListener("click", downloadVideo);
   popupBtn?.addEventListener("click", popupPlayer);
   setting?.addEventListener("click", openOptionsPage);
 }, 6000);
@@ -211,22 +211,22 @@ const toggleLoop = () => {
   }
 };
 
-const toggleStop = () => {
-  const video = document.getElementsByClassName(
-    "video-stream html5-main-video"
-  )[0];
-  const stopBtn = document.getElementById("yt-controls-stop");
-  if (video.paused) {
-    video.play();
-    stopBtn.src = chrome.runtime.getURL("assets/stop.png");
-    stopBtn.title = "Stop video";
-  } else {
-    video.pause();
-    stopBtn.src = chrome.runtime.getURL("assets/play.jpg");
-    stopBtn.title = "Play video";
-    stopBtn.style.filter = "invert(100%)";
-  }
-};
+// const toggleStop = () => {
+//   const video = document.getElementsByClassName(
+//     "video-stream html5-main-video"
+//   )[0];
+//   const stopBtn = document.getElementById("yt-controls-stop");
+//   if (video.paused) {
+//     video.play();
+//     stopBtn.src = chrome.runtime.getURL("assets/stop.png");
+//     stopBtn.title = "Stop video";
+//   } else {
+//     video.pause();
+//     stopBtn.src = chrome.runtime.getURL("assets/play.jpg");
+//     stopBtn.title = "Play video";
+//     stopBtn.style.filter = "invert(100%)";
+//   }
+// };
 
 const takeScreenshot = async () => {
   const video = document.getElementsByClassName(
@@ -337,9 +337,9 @@ const increaseSpeed = () => {
   }, 2000);
 };
 
-const downloadVideo = async () => {
-  alert('Coming Soon!')
-};
+// const downloadVideo = async () => {
+//   alert('Coming Soon!')
+// };
 
 const popupPlayer = () => {
   const video = document.getElementsByTagName("video")[0];
