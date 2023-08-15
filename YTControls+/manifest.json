@@ -1,7 +1,7 @@
 {
   "name": "YTControl+",
   "manifest_version": 3,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get ready to experience the best of youtube with YTControl+.",
   "author":"Shubham Singh",
   "permissions": ["storage", "tabs","activeTab"],
