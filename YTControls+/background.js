@@ -3,18 +3,18 @@ chrome.action.onClicked.addListener(() => {
 })
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ togglePlayPause: true });
+    // chrome.storage.sync.set({ togglePlayPause: true });
     chrome.storage.sync.set({ toggleLoop: true });
-    chrome.storage.sync.set({ addWishlist: true });
+    // chrome.storage.sync.set({ addWishlist: true });
     chrome.storage.sync.set({ toggleCards: true });
-    chrome.storage.sync.set({ toggleCinema: true });
+    // chrome.storage.sync.set({ toggleCinema: true });
     chrome.storage.sync.set({ toggleExpand: true });
     chrome.storage.sync.set({ togglePopup: true });
     chrome.storage.sync.set({ toggleScreenshot: true });
     chrome.storage.sync.set({ toggleMinus: true });
     chrome.storage.sync.set({ toggleSpeed: true });
     chrome.storage.sync.set({ togglePlus: true });
-    chrome.storage.sync.set({ toggleDownload: true });
+    // chrome.storage.sync.set({ toggleDownload: true });
     chrome.storage.sync.set({ toggleSetting: true });
     // chrome.runtime.openOptionsPage();
 });

@@ -1,42 +1,42 @@
 let toggleLoop = document.getElementById("toggle_loop");
-let togglePlayPause = document.getElementById("toggle_play_pause");
-let addWishlist = document.getElementById("add_wishlist");
+// let togglePlayPause = document.getElementById("toggle_play_pause");
+// let addWishlist = document.getElementById("add_wishlist");
 let toggleCards = document.getElementById("toggle_visibility");
-let toggleCinema = document.getElementById('toogle_cinema');
+// let toggleCinema = document.getElementById('toogle_cinema');
 let toggleExpand = document.getElementById('toggle_expand');
 let togglePopup = document.getElementById('toggle_popup');
 let toggleScreenshot = document.getElementById('toggle_screenshot');
 let toggleMinus = document.getElementById('toggle_minus');
 let toggleSpeed = document.getElementById('toggle_speed');
 let togglePlus = document.getElementById('toggle_plus');
-let toggleDownload = document.getElementById('toggle_download');
+// let toggleDownload = document.getElementById('toggle_download');
 let toggleSetting = document.getElementById('toggle_setting');
 let controlsPosition = document.getElementById("controls__position");
 
 chrome.storage.sync.get(['togglePlayPause','toggleLoop','addWishlist', 'toggleCards', 'toggleCinema', 'toggleExpand', 'togglePopup', 'toggleScreenshot', 'toggleMinus', 'toggleSpeed', 'togglePlus', 'toggleDownload', 'toggleSetting', 'controlsPosition']).then((result) => {
-  togglePlayPause.checked = result.togglePlayPause;
+  // togglePlayPause.checked = result.togglePlayPause;
   controlsPosition.value = result.controlsPosition;
   toggleLoop.checked = result.toggleLoop;
-  addWishlist.checked = result.addWishlist;
+  // addWishlist.checked = result.addWishlist;
   toggleCards.checked = result.toggleCards;
-  toggleCinema.checked = result.toggleCinema;
+  // toggleCinema.checked = result.toggleCinema;
   toggleExpand.checked = result.toggleExpand;
   togglePopup.checked = result.togglePopup;
   toggleScreenshot.checked = result.toggleScreenshot;
   toggleMinus.checked = result.toggleMinus;
   toggleSpeed.checked = result.toggleSpeed;
   togglePlus.checked = result.togglePlus;
-  toggleDownload.checked = result.toggleDownload;
+  // toggleDownload.checked = result.toggleDownload;
   toggleSetting.checked = result.toggleSetting;
 })
 
-const toggleplaypause = () => {
-  if (togglePlayPause.checked) {
-    chrome.storage.sync.set({ togglePlayPause: true });
-  } else {
-    chrome.storage.sync.set({ togglePlayPause: false });
-  }
-};
+// const toggleplaypause = () => {
+//   if (togglePlayPause.checked) {
+//     chrome.storage.sync.set({ togglePlayPause: true });
+//   } else {
+//     chrome.storage.sync.set({ togglePlayPause: false });
+//   }
+// };
 
 const toggleloop = () => {
   if (toggleLoop.checked) {
@@ -46,13 +46,13 @@ const toggleloop = () => {
   }
 }
 
-const addwishlist = () => {
-  if (addWishlist.checked) {
-    chrome.storage.sync.set({ addWishlist: true });
-  } else {
-    chrome.storage.sync.set({ addWishlist: false });
-  }
-}
+// const addwishlist = () => {
+//   if (addWishlist.checked) {
+//     chrome.storage.sync.set({ addWishlist: true });
+//   } else {
+//     chrome.storage.sync.set({ addWishlist: false });
+//   }
+// }
 
 const togglecards = () => {
   if (toggleCards.checked) {
@@ -62,13 +62,13 @@ const togglecards = () => {
   }
 }
 
-const togglecinema = () => {
-  if (toggleCinema.checked) {
-    chrome.storage.sync.set({ toggleCinema: true });
-  } else {
-    chrome.storage.sync.set({ toggleCinema: false });
-  }
-}
+// const togglecinema = () => {
+//   if (toggleCinema.checked) {
+//     chrome.storage.sync.set({ toggleCinema: true });
+//   } else {
+//     chrome.storage.sync.set({ toggleCinema: false });
+//   }
+// }
 
 const toggleexpand = () => {
   if (toggleExpand.checked) {
@@ -118,13 +118,13 @@ const toggleplus = () => {
   }
 }
 
-const toggledownload = () => {
-  if (toggleDownload.checked) {
-    chrome.storage.sync.set({ toggleDownload: true });
-  } else {
-    chrome.storage.sync.set({ toggleDownload: false });
-  }
-}
+// const toggledownload = () => {
+//   if (toggleDownload.checked) {
+//     chrome.storage.sync.set({ toggleDownload: true });
+//   } else {
+//     chrome.storage.sync.set({ toggleDownload: false });
+//   }
+// }
 
 const togglesetting = () => {
   if (toggleSetting.checked) {
@@ -134,18 +134,18 @@ const togglesetting = () => {
   }
 }
 
-togglePlayPause.addEventListener("click", toggleplaypause);
+// togglePlayPause.addEventListener("click", toggleplaypause);
 toggleLoop.addEventListener("click", toggleloop);
-addWishlist.addEventListener('click', addwishlist);
+// addWishlist.addEventListener('click', addwishlist);
 toggleCards.addEventListener('click', togglecards);
-toggleCinema.addEventListener('click', togglecinema);
+// toggleCinema.addEventListener('click', togglecinema);
 toggleExpand.addEventListener('click', toggleexpand);
 togglePopup.addEventListener('click', togglepopup);
 toggleScreenshot.addEventListener('click', togglescreenshot);
 toggleMinus.addEventListener('click', toggleminus);
 toggleSpeed.addEventListener('click', togglespeed);
 togglePlus.addEventListener('click', toggleplus);
-toggleDownload.addEventListener('click', toggledownload);
+// toggleDownload.addEventListener('click', toggledownload);
 toggleSetting.addEventListener('click', togglesetting);
 
 const controlPosition = () => {

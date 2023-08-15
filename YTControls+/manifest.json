@@ -2,7 +2,7 @@
   "name": "YTControl+",
   "manifest_version": 3,
   "version": "1.0.0",
-  "description": "This extension provide ad-ons feature to youtube.",
+  "description": "Get ready to experience the best of youtube with YTControl+.",
   "author":"Shubham Singh",
   "permissions": ["storage", "tabs","activeTab"],
   "host_permissions": ["https://*.youtube.com/*"],
@@ -28,11 +28,11 @@
   },
   "action": {
     "default_icon": {
-      "16": "assets/icon16.png",
-      "32": "assets/icon32.png",
-      "48": "assets/icon48.png",
-      "96": "assets/icon96.png",
-      "128": "assets/icon128.png"
+      "16": "assets/logo16.png",
+      "32": "assets/logo32.png",
+      "48": "assets/logo48.png",
+      "96": "assets/logo96.png",
+      "128": "assets/logo128.png"
     },
     "default_title": "Enhance your youtube experience!"
   }
