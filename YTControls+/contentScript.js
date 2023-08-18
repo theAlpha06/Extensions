@@ -156,17 +156,25 @@ const newVideoLoaded = () => {
           const youtubeChrome =
             document.getElementsByClassName("ytd-watch-metadata")[0];
           if (youtubeChrome) {
-            youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
+            controlsDiv.style.backgroundColor = "black";
+            controlsDiv.style.width = "fit-content";
+            controlsDiv.style.padding = "10px";
+            controlsDiv.style.borderRadius = "5px";
           }
+          youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
         }, 5000);
       } else {
         setTimeout(() => {
-          const yt_container = document.getElementById("columns");
-          if (yt_container) {
-            controlsDiv.style.marginBottom = "0px";
-            yt_container.appendChild(container);
+          const youtubeChrome =
+            document.getElementsByClassName("ytd-watch-metadata")[0];
+          if (youtubeChrome) {
+            controlsDiv.style.backgroundColor = "black";
+            controlsDiv.style.width = "fit-content";
+            controlsDiv.style.padding = "10px";
+            controlsDiv.style.borderRadius = "5px";
           }
-        }, 5000)
+          youtubeChrome.insertBefore(controlsDiv, youtubeChrome.firstChild);
+        }, 5000);
       }
     });
   }
